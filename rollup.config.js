@@ -9,6 +9,13 @@ export default {
     { file: pkg.main, format: "cjs" },
     { file: pkg.module, format: "es" }
   ],
+
   external: ["react", "react-dom"],
-  plugins: [resolve(), commonjs(), babel({ babelHelpers: "bundled" })]
+  plugins: [copy({
+    targets: [{ src: "src/index.d.ts", dest: "dist" }],
+    }),
+    resolve(),
+    commonjs(),
+    babel({ babelHelpers: "bundled" })
+  ]
 };
